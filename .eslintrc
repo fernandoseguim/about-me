@@ -1,0 +1,52 @@
+{
+  "settings": {
+    "react": {
+        "version": "16"
+    }
+  },
+  "extends": ["airbnb", "react-app", "prettier", "prettier/react"],
+  "plugins": ["prettier"],
+  "rules": {
+    "no-param-reassign": [2, {"props": false}],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/prefer-stateless-function": [
+      0,
+      {
+        "ignorePureComponents": true
+      }
+    ],
+    "react/prop-types": 0,
+    "no-underscore-dangle": 0,
+    "import/imports-first": ["error", "absolute-first"],
+    "import/newline-after-import": "error",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ]
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "FormData": true,
+    "FileReader": true,
+    "Blob": true,
+    "navigator": true,
+    "shallow":true
+  },
+  "parser": "babel-eslint",
+  "env": {
+    "node": true,
+    "mocha": true,
+    "jest": true
+  }
+}

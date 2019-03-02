@@ -1,0 +1,5 @@
+{
+  "hooks": {
+    "pre-commit": "npm test && cross-env NODE_ENV=production lint-staged"
+  }
+}
