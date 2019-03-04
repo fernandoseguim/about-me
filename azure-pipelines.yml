@@ -1,0 +1,58 @@
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+variables:
+  nodeVersion: "10.15.x"
+  MajorVersion: 1
+  MinorVersion: 0
+  Patch: 0
+
+name: $(MajorVersion).$(MinorVersion).$(Patch)+$(Rev:r)
+
+steps:
+- task: NodeTool@0
+  displayName: 'Use node $(nodeVersion)'
+  inputs:
+    versionSpec: $(nodeVersion)
+  
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    command: install
+
+- task: Npm@1
+  displayName: 'npm test'
+  inputs:
+    command: custom
+    customCommand: 'run test:coverage'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: JUnit
+    testResultsFiles: '**/junit.xml'
+    testRunTitle: 'Test results for JavaScript'
+  condition: succeeded()
+
+- task: PublishCodeCoverageResults@1
+  inputs: 
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
+  condition: succeeded()
+
+- task: Npm@1
+  displayName: 'npm build'
+  inputs:
+    command: custom
+    customCommand: 'run build'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+- task: ArchiveFiles@2
+  displayName: 'Compact and Copy Files to $(Build.ArtifactStagingDirectory)'
+  inputs:
+    rootFolderOrFile: build
+    includeRootFolder: false
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
