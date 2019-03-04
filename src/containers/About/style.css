@@ -1,0 +1,134 @@
+#about {
+  background: #430d44;
+  padding-top: 96px;
+  padding-bottom: 66px;
+  overflow: hidden;
+}
+
+#about h2 {
+  font: 22px/30px 'opensans-bold', sans-serif;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+#about p {
+  line-height: 30px;
+  color: #ececec;
+  text-align: justify;
+  padding-bottom: 1em;
+}
+
+#about a,
+#about a:visited {
+  color: #fff;
+  font-weight: 600;
+  font-style: italic;
+}
+#about a:hover,
+#about a:focus {
+  color: #11abb0;
+}
+
+#about .profile {
+  width: 25%;
+  position: relative;
+  padding: 0 20px;
+  min-height: 1px;
+  float: left;
+}
+
+#about .profile::before,
+#about .profile::after {
+  content: ' ';
+  display: table;
+}
+
+#about .profile::after {
+  clear: both;
+}
+
+#about .profile-picture {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 100%;
+  box-shadow: 4px 4px 4px rgba(12, 12, 12, 0.5);
+}
+
+#about .bio {
+  width: 75%;
+  float: left;
+  position: relative;
+}
+
+#about .bio h2 {
+  font-weight: 600;
+  text-shadow: 0px 2px 4px rgba(12, 12, 12, 0.5);
+}
+
+#about .content {
+  margin: auto;
+}
+
+#about .contact-details,
+#about .resume-download {
+  width: 50%;
+  float: left;
+  position: relative;
+}
+
+#about .contact-details address {
+  color: #dbdbdb;
+}
+
+#about .contact-details ul li {
+  padding: 0.3em 0 0.2em 0;
+}
+
+#about .contact-details span {
+  padding-right: 0.5em;
+}
+
+#about .contact-details strong {
+  font-weight: 600;
+}
+
+#about .contact-details a {
+  text-decoration: none;
+  font-style: normal;
+  font-weight: normal;
+}
+
+#about .resume-download {
+  margin-top: 50px;
+}
+
+#about .resume-download .download-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+#about .resume-download .download-button:hover {
+  background-color: #7d167f;
+}
+
+@media only screen and (max-width: 460px) {
+  #about .content {
+    width: auto;
+  }
+}
+
+/* larger screens
+--------------------------------------------------------------- */
+@media screen and (min-width: 1200px) {
+  #about .content {
+    max-width: 1180px;
+  }
+}
